@@ -1,0 +1,26 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/color_n20_000000</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/color_F4F4F4</item>
+        <item name="android:windowAnimationStyle">@style/Animation_Activity</item>
+        <!--//状态栏透明-->
+        <!--<item name="android:windowTranslucentStatus">true</item>-->
+    </style>
+
+
+    <style name="withe_activity_theme" parent="AppTheme">
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
+    <style name="Animation_Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/translate_right_to_center</item>
+        <item name="android:activityOpenExitAnimation">@anim/translate_center_to_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/translate_left_to_center</item>
+        <item name="android:activityCloseExitAnimation">@anim/translate_center_to_right</item>
+    </style>
+
+</resources>

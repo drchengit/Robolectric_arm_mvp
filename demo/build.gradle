@@ -1,0 +1,146 @@
+apply plugin: 'com.android.application'
+apply plugin: 'svg'
+
+svg {
+    // 配置vector目录，可以配置多个(如果直接使用svg格式图片，可以不配置此项)
+    vectorDirs = ["src/main/res_vector/drawable"]
+    // 配置生成空shape文件目录
+    shapeDir = "src/main/res_shape/drawable"
+    // 配置生成java文件目录
+    javaDir = "src/main/java/me/jessyan/mvparms/demo/drawables"
+
+    // 自动将vector和shape资源文件添加到SourceSet，此项默认是true，可以不设置
+    autoSourceSet = true
+
+    // 定义svg生成vector的配置，可以配置多个目录，方便图片分类
+    svg2vector {
+        svg_a {
+            svgDir = "${projectDir}/svg_a"
+            vectorDir = "src/main/res_svg/drawable"
+            // 配置生成的vector尺寸，不设置将按照图片尺寸大小
+            // 注意此处宽高比要与图片宽高比一致，否则图片会变形
+//            height = 48
+//            width = 48
+        }
+//        svg_b {
+//            svgDir = "${projectDir}/svg_b"
+//            vectorDir = "src/main/res_svg/drawable"
+//            height = 48
+//            width = 48
+//        }
+    }
+
+}
+
+android {
+
+
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+    useLibrary 'org.apache.http.legacy'
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId "me.jessyan.mvparms.demo"
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+        testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
+        vectorDrawables.useSupportLibrary = true
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE :"default"]
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField "boolean", "USE_CANARY", "true"
+            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            buildConfigField "boolean", "USE_CANARY", "false"
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+        disable "ResourceType"
+        abortOnError false
+    }
+    buildToolsVersion '28.0.3'
+
+//    sourceSets {
+//        // 为了开发时能引用vector文件方便预览，将存放vector文件目录添加到资源文件目录中
+//        debug {
+//            java.srcDirs = ['src/main/java']
+//            res.srcDirs = ['src/main/res', 'src/main/res_vector']
+//        }
+//        release {
+//            java.srcDirs = ['src/main/java']
+//            res.srcDirs = ['src/main/res']
+//        }
+//    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //tools
+    //注意 Arms 核心库现在并不会依赖某个 EventBus, 要想使用 EventBus, 还请在项目中自行依赖对应的 EventBus
+    //现在支持两种 EventBus, greenrobot 的 EventBus 和畅销书 《Android源码设计模式解析与实战》的作者 何红辉 所作的 AndroidEventBus
+    //依赖后 Arms 会自动检测您依赖的 EventBus 并自动注册
+    //建议使用 AndroidEventBus, 特别是组件化项目, 原因请看 https://github.com/hehonghui/AndroidEventBus/issues/49
+    //这种做法可以让使用者有自行选择三方库的权利, 并且还可以减轻 Arms 的体积
+    implementation rootProject.ext.dependencies["androideventbus"]
+    //    implementation rootProject.ext.dependencies["eventbus"]
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
+    implementation rootProject.ext.dependencies["progressmanager"]
+    implementation rootProject.ext.dependencies["retrofit-url-manager"]
+    implementation rootProject.ext.dependencies["lifecyclemodel"]
+    //view
+    annotationProcessor(rootProject.ext.dependencies["butterknife-compiler"]) {
+        exclude module: 'support-annotations'
+    }
+
+    implementation rootProject.ext.dependencies["paginate"]
+    //arms
+    implementation project(':arms')
+    //Arms 核心库不再包含 AndroidAutoLayout, 可自行选择屏幕适配方案, 不想使用 AndroidAutoLayout 就不要依赖 arms-autolayout
+    //Arms 核心库不再包含 Glide, 想使用其他图片加载框架或者想自行扩展 ImageLoaderStrategy 就不要依赖 arms-imageloader-glide
+    //依赖 arms-imageloader-glide 后还需要在 GlobalConfiguration 中手动注册 GlideImageLoaderStrategy
+    implementation project(':arms-imageloader-glide')
+    //Github 仓库上最新的 Demo 具有下一个版本的新特性, 所以依赖最新的远程库会出现版本不兼容的情况, 详情请查看 https://github.com/JessYanCoding/MVPArms/wiki/Issues#2
+    //        implementation 'me.jessyan:arms:2.5.0'
+    //test
+    testImplementation rootProject.ext.dependencies["junit"]
+    debugImplementation rootProject.ext.dependencies["canary-debug"]
+    releaseImplementation rootProject.ext.dependencies["canary-release"]
+    testImplementation rootProject.ext.dependencies["canary-release"]
+    implementation rootProject.ext.dependencies["autosize"]
+
+    implementation rootProject.ext.dependencies["pickerview"]
+    api project(':ThirdLibrarys:xrecyclerview')
+
+
+//    api rootProject.ext.dependencies["LargeImageView"]
+    //二维🐎
+    implementation rootProject.ext.dependencies["bga-qrcode-zxing"]
+
+    implementation rootProject.ext.dependencies["PictureSelector"]
+
+//    implementation rootProject.ext.dependencies["cardview-v7"]
+    implementation rootProject.ext.dependencies["design"]
+
+    implementation rootProject.ext.dependencies["svg"]
+}

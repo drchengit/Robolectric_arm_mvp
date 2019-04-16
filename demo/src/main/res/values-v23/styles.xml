@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/color_F4F4F4</item>
+        <item name="android:windowAnimationStyle">@style/Animation_Activity</item>
+        <!--黑色字体-->
+        <item name="android:windowLightStatusBar">true</item>
+        <!--//状态栏透明-->
+        <!--<item name="android:windowTranslucentStatus">true</item>-->
+    </style>
+</resources>

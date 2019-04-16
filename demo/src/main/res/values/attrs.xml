@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="user_ic_delete" format="reference" />
+    <attr name="user_delete_x" format="dimension"  />
+    <attr name="user_delete_y" format="dimension"  />
+    <attr name="user_delete_width" format="dimension"  />
+    <attr name="user_delete_height" format="dimension"  />
+    <attr name="user_ic_left_click" format="reference" />
+    <attr name="user_ic_left_unclick" format="reference" />
+    <attr name="user_left_x" format="dimension"  />
+    <attr name="user_left_y" format="dimension"  />
+    <attr name="user_left_width" format="dimension"  />
+    <attr name="user_left_height" format="dimension"  />
+    <attr name="user_lineColor_click" format="color"  />
+    <attr name="user_lineColor_unclick" format="color"  />
+    <attr name="user_linePosition" format="dimension"  />
+    <attr name="user_noHasleftDrawble" format="boolean"/>
+    <attr name="user_hint" format="string"></attr>
+    <attr name="user_text" format="string"/>
+    <attr name="title" format="string"/>
+    <attr name="hasTriangle" format="boolean"/>
+    <attr name="hasBottom" format="boolean"/>
+    <attr name="text" format="string"/>
+    <attr name="isNormal" format="boolean"/>
+    <attr name="tabWith" format="dimension"/>
+    <attr name="paddingStart" format="dimension"/>
+    <declare-styleable name="UserPhoneEditText">
+        <attr name="user_ic_delete"   />
+        <attr name="user_delete_x"   />
+        <attr name="user_delete_y"   />
+        <attr name="user_delete_width"   />
+        <attr name="user_delete_height"    />
+
+        <attr name="user_ic_left_click"   />
+        <attr name="user_ic_left_unclick"   />
+        <attr name="user_left_x"    />
+        <attr name="user_left_y"  />
+        <attr name="user_left_width"   />
+        <attr name="user_left_height"    />
+
+        <attr name="user_lineColor_click"   />
+        <attr name="user_lineColor_unclick"    />
+        <attr name="user_linePosition"    />
+    </declare-styleable>
+    <declare-styleable name="UserVerifyEditText">
+        <attr name="user_ic_delete"   />
+        <attr name="user_delete_x"   />
+        <attr name="user_delete_y"   />
+        <attr name="user_delete_width"   />
+        <attr name="user_delete_height"    />
+
+        <attr name="user_ic_left_click"   />
+        <attr name="user_ic_left_unclick"   />
+        <attr name="user_left_x"    />
+        <attr name="user_left_y"  />
+        <attr name="user_left_width"   />
+        <attr name="user_left_height"    />
+
+        <attr name="user_lineColor_click"   />
+        <attr name="user_lineColor_unclick"    />
+        <attr name="user_linePosition"    />
+    </declare-styleable>
+    <declare-styleable name="UserMyVerifyLinerText">
+        <attr name="user_hint"/>
+        <attr name="user_text"/>
+        <attr name="user_noHasleftDrawble"/>
+        <attr name="user_lineColor_click"    />
+        <attr name="user_lineColor_unclick"    />
+        <attr name="user_linePosition"/>
+    </declare-styleable>
+    <declare-styleable name="PublicBannerViewPager">
+        <attr name="public_banner_isloop" format="boolean"/> <!--是否自动轮播-->
+        <attr name="public_banner_looptime" format="integer"/> <!--自动轮播的时间-->
+        <attr name="public_banner_switchtime" format="integer"/> <!--轮播时，viewpager的切换速度-->
+        <attr name="public_banner_loop_max_count" format="integer"/> <!--超过这个数字时，才会轮播效果-->
+    </declare-styleable>
+
+    <declare-styleable name="PublicZoomIndicator">
+    <attr name="public_zoom_dot" format="reference"/> <!--selecotr，一般就一个圆点即可-->
+    <attr name="public_zoom_leftmargin" format="dimension"/><!--两个圆点之间的间距-->
+    <attr name="public_zoom_max" format="float"/> <!--小圆点放大的倍数-->
+    <attr name="public_zoom_alpha_min" format="float"/><!--小圆点缩小的倍数-->
+    <attr name="public_zoom_dismiss_open" format="boolean"/><!--做引导页的最后一页，是否隐藏圆点-->
+
+    </declare-styleable>
+
+    <declare-styleable name="PercentLayout_Layout">
+        <attr name="layout_marginTopPercent" format="fraction"/>
+        <attr name="layout_marginBottomPercent" format="fraction"/>
+        <attr name="layout_aspectRatio" format="fraction"/>
+    </declare-styleable>
+    <declare-styleable name="PublicShadowLayout">
+        <attr name="public_bg_color"  />
+        <attr name="public_shaw_color" />
+
+        <attr name="public_offset_x" />
+        <attr name="public_offset_y"  />
+        <attr name="public_radius"  />
+        <attr name="public_effect"  />
+        <attr name="public_notop" />
+        <attr name="public_noleft"  />
+        <attr name="public_noright"   />
+        <attr name="public_nobottom" />
+    </declare-styleable>
+    <declare-styleable name="RoundImageView">
+        <attr name="public_offset_x" />
+        <attr name="public_offset_y"  />
+        <attr name="image_radius" format="dimension" />//圆角大小
+        <attr name="image_effect" format="dimension" />//阴影大小
+
+        <attr name="shadow_color" format="color"/>//阴影颜色
+
+    </declare-styleable>
+    <declare-styleable name="CustomToolbar">
+        <attr name="title"/>
+        <attr name="isNormal"/>
+    </declare-styleable>
+    <declare-styleable name="BubbleView">
+        <attr name="hasTriangle"/>
+        <attr name="hasBottom"/>
+        <attr name="text"/>
+    </declare-styleable>
+    <declare-styleable name="SlideTabView">
+        <attr name="tabWith"/>
+        <attr name="txtSize" format="integer"/>
+        <attr name="textTabWith" format="dimension"/>
+        <attr name="paddingStart"/>
+    </declare-styleable>
+
+</resources>

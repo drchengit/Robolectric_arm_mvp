@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/back_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|center_vertical"
+        app:srcCompat="@drawable/ic_pin_left" />
+
+    <TextView
+        android:id="@+id/title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+
+        android:includeFontPadding="false"
+        android:text="找回密码"
+        android:textColor="@color/color_030303"
+        android:textSize="17sp" />
+    <ImageView
+     android:visibility="gone"
+        android:id="@+id/right_iv"
+
+        android:layout_marginEnd="15dp"
+        android:layout_gravity="end|center_vertical"
+        android:layout_width="24dp"
+        android:layout_height="24dp" />
+    <TextView
+
+        android:textSize="14sp"
+        android:textColor="@color/color_2F3344"
+        android:visibility="gone"
+        android:id="@+id/right_tv"
+
+        android:layout_marginEnd="15dp"
+        android:layout_gravity="end|center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</FrameLayout>
