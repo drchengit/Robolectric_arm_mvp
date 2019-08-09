@@ -15,6 +15,7 @@
  */
 package com.jess.arms.utils;
 
+import com.jess.arms.http.test.TestLife;
 import com.jess.arms.integration.lifecycle.ActivityLifecycleable;
 import com.jess.arms.integration.lifecycle.FragmentLifecycleable;
 import com.jess.arms.integration.lifecycle.Lifecycleable;
@@ -103,14 +104,37 @@ public class RxLifecycleUtils {
     }
 
     public static <T> LifecycleTransformer<T> bindToLifecycle(@NonNull Lifecycleable lifecycleable) {
-        Preconditions.checkNotNull(lifecycleable, "lifecycleable == null");
-        if (lifecycleable instanceof ActivityLifecycleable) {
-            return RxLifecycleAndroid.bindActivity(((ActivityLifecycleable) lifecycleable).provideLifecycleSubject());
-        } else if (lifecycleable instanceof FragmentLifecycleable) {
-            return RxLifecycleAndroid.bindFragment(((FragmentLifecycleable) lifecycleable).provideLifecycleSubject());
-        } else {
-            throw new IllegalArgumentException("Lifecycleable not match");
+
+        try {
+            Preconditions.checkNotNull(lifecycleable, "lifecycleable == null");
+            if (lifecycleable instanceof ActivityLifecycleable) {
+                return RxLifecycleAndroid.bindActivity(((ActivityLifecycleable) lifecycleable).provideLifecycleSubject());
+            } else if (lifecycleable instanceof FragmentLifecycleable) {
+                return RxLifecycleAndroid.bindFragment(((FragmentLifecycleable) lifecycleable).provideLifecycleSubject());
+            } else {
+                throw new IllegalArgumentException("Lifecycleable not match");
+            }
+        }catch (NullPointerException e){
+            if(isTesting()){//这个方法判断是否正在 robolectric 单元测试
+                return RxLifecycleAndroid.bindActivity(new TestLife().provideLifecycleSubject());
+            }else {
+                throw e;
+            }
         }
+
     }
 
+    private static boolean isTesting() {
+        boolean istest;
+
+        try {
+
+            Class.forName("me.jessyan.mvparms.demo.base.MyPresenterRunner"); // for e.g. com.example.MyTest
+
+            istest = true;
+        } catch (ClassNotFoundException e) {
+            istest = false;
+        }
+        return istest;
+    }
 }

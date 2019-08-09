@@ -18,7 +18,7 @@ import com.jess.arms.R;
 
 
 /**
- * 罗浮广场画布旋转加载动效
+ * 画布旋转加载动效
  */
 public class LFRotateView extends View {
     private int mWidth;

@@ -47,10 +47,14 @@ public class AppLifecyclesImpl implements AppLifecycles {
 
     @Override
     public void onCreate(@NonNull Application application) {
-        if (LeakCanary.isInAnalyzerProcess(application)) {
-            // This process is dedicated to LeakCanary for heap analysis.
-            // You should not init your app in this process.
-            return;
+        try {
+            if (LeakCanary.isInAnalyzerProcess(application)) {
+                // This process is dedicated to LeakCanary for heap analysis.
+                // You should not init your app in this process.
+                return;
+            }
+        }catch (NullPointerException e){
+
         }
         if (BuildConfig.LOG_DEBUG) {//Timber初始化
             //Timber 是一个日志框架容器,外部使用统一的Api,内部可以动态的切换成任何日志框架(打印策略)进行日志打印
@@ -70,9 +74,13 @@ public class AppLifecyclesImpl implements AppLifecycles {
         //LeakCanary 内存泄露检查
         //使用 IntelligentCache.KEY_KEEP 作为 key 的前缀, 可以使储存的数据永久存储在内存中
         //否则存储在 LRU 算法的存储空间中, 前提是 extras 使用的是 IntelligentCache (框架默认使用)
-        ArmsUtils.obtainAppComponentFromContext(application).extras()
-                .put(IntelligentCache.getKeyOfKeep(RefWatcher.class.getName())
-                        , BuildConfig.USE_CANARY ? LeakCanary.install(application) : RefWatcher.DISABLED);
+        try {
+            ArmsUtils.obtainAppComponentFromContext(application).extras()
+                    .put(IntelligentCache.getKeyOfKeep(RefWatcher.class.getName())
+                            , BuildConfig.USE_CANARY ? LeakCanary.install(application) : RefWatcher.DISABLED);
+        }catch (NullPointerException e){
+
+        }
     }
 
     @Override

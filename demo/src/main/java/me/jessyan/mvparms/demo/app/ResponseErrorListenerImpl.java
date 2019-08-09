@@ -17,9 +17,11 @@ package me.jessyan.mvparms.demo.app;
 
 import android.content.Context;
 import android.net.ParseException;
+import android.widget.Toast;
 
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonParseException;
+import com.jess.arms.base.BaseApplication;
 import com.jess.arms.utils.ArmsUtils;
 
 import org.json.JSONException;
@@ -57,8 +59,10 @@ public class ResponseErrorListenerImpl implements ResponseErrorListener {
             msg = convertStatusCode(httpException);
         } else if (t instanceof JsonParseException || t instanceof ParseException || t instanceof JSONException || t instanceof JsonIOException) {
             msg = "数据解析错误";
+        }else if(t instanceof MyNetException){
+            msg = ((MyNetException) t).getMsg();
         }
-        ArmsUtils.snackbarText(msg);
+        Toast.makeText(BaseApplication.getContext(),msg,Toast.LENGTH_SHORT).show();
     }
 
     private String convertStatusCode(HttpException httpException) {

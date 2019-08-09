@@ -62,8 +62,12 @@ public class BaseApplication extends Application implements App {
         super.onCreate();
         if (mAppDelegate != null)
             this.mAppDelegate.onCreate(this);
+        BaseApplication.context = getApplicationContext();
     }
-
+    private static Context context;
+    public static Context getContext() {
+        return context;
+    }
     /**
      * 在模拟环境中程序终止时会被调用
      */

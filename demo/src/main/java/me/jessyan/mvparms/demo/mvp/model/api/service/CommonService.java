@@ -15,6 +15,11 @@
  */
 package me.jessyan.mvparms.demo.mvp.model.api.service;
 
+import io.reactivex.Observable;
+import me.jessyan.mvparms.demo.mvp.model.entity.User;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+
 /**
  * ================================================
  * 存放通用的一些 API
@@ -26,4 +31,6 @@ package me.jessyan.mvparms.demo.mvp.model.api.service;
  */
 public interface CommonService {
 
+    @GET("/users/{username}")
+    Observable<User> getUser(@Path("username") String username);
 }
