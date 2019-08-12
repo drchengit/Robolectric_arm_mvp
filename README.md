@@ -5,7 +5,7 @@
 如果有用别忘了star哦！  
 # Robolectric_arm_mvp
 对 jessyan arm mvp 框架的进行Robolectric 网络单元测试的解耦，如果用这框架可以看看。  
-Robolectric 实战解耦整个系列：
+Robolectric 实战解耦整个系列：  
 [Robolectric 之 Jessyan Arm框架之Mvp 单元测试解耦过程（View 层）](https://www.jianshu.com/p/37fc16158d8f)  
 [Robolectric 之 Jessyan Arm框架之Mvp 单元测试解耦过程（Presenter 层）](https://www.jianshu.com/p/6a26107c67ef)  
 [Robolectric 之 Jessyan Arm框架之Mvp 单元测试本地json测试](https://www.jianshu.com/p/595c50ce7ec9)  
